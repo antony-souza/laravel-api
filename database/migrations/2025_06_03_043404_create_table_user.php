@@ -20,8 +20,8 @@ return new class extends Migration
                 UserTypeEnum::COLLABORATOR->value,
                 UserTypeEnum::CUSTOMER->value,
             ])->default(UserTypeEnum::CUSTOMER->value);
-            $table->timestamp('created_at')->useCurrent()->useCurrent();
-            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
