@@ -9,5 +9,5 @@ Route::get('/', function () {
 });
 
 Route::prefix('user')->group(function () {
-    Route::get('/{name}', [UserController::class, 'findMany']);
+    Route::get('/', [UserController::class, 'findMany']);
 });

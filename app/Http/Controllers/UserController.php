@@ -3,24 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
-{
+{ 
+    private $userService;
 
-    public function findMany(string $name)
+    public function __construct(UserService $userService)
     {
+        $this->userService = $userService;
+    }
 
-        $users = ['Alice', 'Bob', 'Charlie'];
-
-        if ($name) {
-            $users = array_filter($users, function ($user) use ($name) {
-                return stripos($user, $name) !== false;
-            });
-
-            $users =  array_values($users);
-        }
-
-        return response()->json($users);
+    public function findMany(Request $request): array
+    {
+        return $this->userService->findMany();
     }
 }
