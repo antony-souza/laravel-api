@@ -3,20 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Services\UserService;
-use Illuminate\Http\Request;
+use App\Modules\User\Requests\CreateUserRequest;
+use App\Modules\User\Services\UserService;
 
 class UserController extends Controller
 { 
-    private $userService;
+    private UserService $_userService;
 
     public function __construct(UserService $userService)
     {
-        $this->userService = $userService;
+        $this->_userService = $userService;
     }
 
-    public function findMany(Request $request): array
+    public function findMany(CreateUserRequest $request): array
     {
-        return $this->userService->findMany();
+        return $this->_userService->findMany($request);
     }
 }

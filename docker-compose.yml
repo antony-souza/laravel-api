@@ -12,6 +12,10 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
     networks:
-      - backend-network
-  volumes:
-    postgres-data:
+      - laravel-network
+
+networks:
+  laravel-network:
+
+volumes:
+  postgres-data:
